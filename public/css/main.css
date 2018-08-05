@@ -64,7 +64,7 @@ body {
 }
 .icon_left,
 .icon_right {
-  background-image: url(/assets/arrow-left.svg);
+  background-image: url(../assets/arrow-left.svg);
 }
 .icon_right {
   -webkit-transform: rotate(180deg);
@@ -72,29 +72,29 @@ body {
 }
 .icon_down-double,
 .icon_up-double {
-  background-image: url(/assets/arrow-up-double.svg);
+  background-image: url(../assets/arrow-up-double.svg);
 }
 .icon_down-double {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .icon_cloud-drizzle {
-  background-image: url(/assets/cloud-drizzle.svg);
+  background-image: url(../assets/cloud-drizzle.svg);
 }
 .icon_sun {
-  background-image: url(/assets/icon_sun.svg);
+  background-image: url(../assets/icon_sun.svg);
 }
 .icon_sun.icon_highlight {
-  background-image: url(/assets/icon_sun_2.svg);
+  background-image: url(../assets/icon_sun_2.svg);
 }
 .icon_temperature {
-  background-image: url(/assets/icon_temperature.svg);
+  background-image: url(../assets/icon_temperature.svg);
 }
 .icon_temperature.icon_highlight {
-  background-image: url(/assets/icon_temperature_2.svg);
+  background-image: url(../assets/icon_temperature_2.svg);
 }
 .icon_scheduled {
-  background-image: url(/assets/icon_scheduled.svg);
+  background-image: url(../assets/icon_scheduled.svg);
 }
 .button {
   background: #f7f7f7;
@@ -307,7 +307,7 @@ body.popup-opened .popup-overlay {
   width: 108px;
 }
 .logo__link {
-  background-image: url("/assets/Яндекс Дом.svg");
+  background-image: url("../assets/Яндекс Дом.svg");
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
@@ -465,27 +465,30 @@ body.popup-opened .popup-overlay {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .main-dashboard {
-    background: url(/assets/bg@2x.png);
+    background: url(../assets/bg@2x.png);
   }
 }
 .main-dashboard {
-  background: url(/assets/bg@1x.png);
+  background: url(../assets/bg@1x.png);
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .main-dashboard {
     background: -webkit-image-set(
-      url(/assets/bg@1x.png) 1x,
-      url(/assets/bg@2x.png) 2x
+      url(../assets/bg@1x.png) 1x,
+      url(../assets/bg@2x.png) 2x
     );
-    background: url(/assets/bg@2x.png);
+    background: url(../assets/bg@2x.png);
   }
 }
 .main-dashboard {
   background: -webkit-image-set(
-    url(/assets/bg@1x.png) 1x,
-    url(/assets/bg@2x.png) 2x
+    url(../assets/bg@1x.png) 1x,
+    url(../assets/bg@2x.png) 2x
   );
-  background: image-set(url(/assets/bg@1x.png) 1x, url(/assets/bg@2x.png) 2x);
+  background: image-set(
+    url(../assets/bg@1x.png) 1x,
+    url(../assets/bg@2x.png) 2x
+  );
   background-repeat: no-repeat;
   background-size: contain;
 }
