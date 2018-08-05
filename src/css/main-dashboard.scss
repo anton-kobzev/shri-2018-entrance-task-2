@@ -1,0 +1,82 @@
+.main-dashboard {
+  display: flex;
+  justify-content: space-between;
+  height: 331px;
+  padding: 20px;
+  background: image-set(
+    url("../assets/bg@1x.png") 1x,
+    url("../assets/bg@2x.png") 2x
+  );
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &__column-1 {
+    padding: 5px;
+  }
+
+  &__header {
+    font-weight: bold;
+    font-size: 27px;
+  }
+
+  &__subheader {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  &__sensors {
+    margin-top: 25px;
+  }
+
+  &__sensors-item {
+    display: inline-block;
+    margin-right: 18px;
+  }
+
+  &__sensor-title {
+    display: block;
+    font-size: 14px;
+    color: #858585;
+  }
+
+  &__sensor-value {
+    font-weight: bold;
+    font-size: 36px;
+    letter-spacing: 0;
+  }
+
+  &__column-2 {
+    height: 332px;
+    margin-top: -20px;
+  }
+
+  &__vertical-slider-wrapper {
+    padding-top: 20px;
+    height: 100%;
+  }
+
+  @media (max-width: $small-viewport) {
+    background-size: cover;
+    flex-direction: column;
+    border-radius: 30px;
+
+    &__column-2 {
+      height: auto;
+      overflow: scroll;
+      margin: -20px;
+
+      .slider {
+        flex-direction: row;
+        padding-right: 20px;
+      }
+
+      .slider__item:nth-child(2) {
+        margin-left: 20px;
+      }
+
+      .slider__tip {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.control {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &[aria-disabled="true"] {
+    opacity: 0.3;
+    cursor: default;
+  }
+}

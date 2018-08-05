@@ -1,0 +1,11 @@
+.logo {
+  width: 108px;
+
+  &__link {
+    display: block;
+    background-size: cover;
+    height: 35px;
+    background-image: url("../assets/Яндекс Дом.svg");
+    background-repeat: no-repeat;
+  }
+}

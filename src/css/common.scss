@@ -1,0 +1,79 @@
+$primary-color: #ffd93e;
+$primary-color-variant: #ffcd00;
+$secondary-color: #f7f7f7;
+$secondary-color-variant: #e6e6e6;
+$text-color: #333333;
+$text-accent-color: #d00;
+
+$small-viewport: 940px;
+
+$header-width: 92px;
+$footer-width: 64px;
+
+* {
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+body {
+  margin: 0;
+  font-family: ArialMT, Arial, Helvetica, sans-serif;
+  color: $text-color;
+}
+
+.wrap {
+  transition: filter 0.2s;
+}
+
+.main-content {
+  display: grid;
+  grid-gap: 30px 26px;
+  padding: 30px 40px;
+  grid-template-columns: 630px calc(100vw - 630px - 80px - 26px);
+  overflow: hidden;
+
+  // Прибитие футера книзу
+  min-height: calc(100vh - #{$header-width} - #{$footer-width});
+
+  @media (max-width: $small-viewport) {
+    padding: 0 20px;
+    grid-template-columns: calc(100vw - 40px);
+  }
+}
+
+.main-info {
+  @media (max-width: $small-viewport) {
+    .block__header {
+      display: none;
+    }
+  }
+}
+
+.favorite-devices {
+  grid-column: span 2;
+
+  @media (max-width: $small-viewport) {
+    grid-column: initial;
+  }
+}
+
+.favorite-scenarios {
+  .slider__item {
+    width: 200px;
+    height: 100px;
+  }
+
+  .block__content {
+    overflow-x: hidden;
+  }
+
+  .slider {
+    padding: 2px; // Для предотвращения скрытия тени элементов слайдера
+  }
+
+  @media (max-width: 1000px) and (min-width: $small-viewport) {
+    .block__controls-wrapper {
+      display: none;
+    }
+  }
+}

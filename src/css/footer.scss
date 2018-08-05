@@ -1,0 +1,28 @@
+$footer-text-color: #858585;
+
+.footer {
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 40px;
+  font-size: 12px;
+  color: $footer-text-color;
+  letter-spacing: 0.01px;
+  z-index: 20;
+
+  &__link {
+    text-decoration: none;
+    color: $footer-text-color;
+    margin-right: 20px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $text-accent-color;
+    }
+  }
+
+  @media (max-width: $small-viewport) {
+    position: static;
+  }
+}
