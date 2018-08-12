@@ -784,29 +784,29 @@ body.popup-opened .popup-container {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .main-dashboard {
-    background: url(../assets/bg@2x.png);
+    background: url(../assets/bg@2x.jpg);
   }
 }
 .main-dashboard {
-  background: url(../assets/bg@1x.png);
+  background: url(../assets/bg@1x.jpg);
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .main-dashboard {
     background: -webkit-image-set(
-      url(../assets/bg@1x.png) 1x,
-      url(../assets/bg@2x.png) 2x
+      url(../assets/bg@1x.jpg) 1x,
+      url(../assets/bg@2x.jpg) 2x
     );
-    background: url(../assets/bg@2x.png);
+    background: url(../assets/bg@2x.jpg);
   }
 }
 .main-dashboard {
   background: -webkit-image-set(
-    url(../assets/bg@1x.png) 1x,
-    url(../assets/bg@2x.png) 2x
+    url(../assets/bg@1x.jpg) 1x,
+    url(../assets/bg@2x.jpg) 2x
   );
   background: image-set(
-    url(../assets/bg@1x.png) 1x,
-    url(../assets/bg@2x.png) 2x
+    url(../assets/bg@1x.jpg) 1x,
+    url(../assets/bg@2x.jpg) 2x
   );
   background-repeat: no-repeat;
   background-size: contain;
