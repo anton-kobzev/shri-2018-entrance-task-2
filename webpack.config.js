@@ -6,7 +6,7 @@ module.exports = {
   entry: ["./src/js/main.js", "./src/css/main.scss"],
   output: {
     path: PUBLIC_PATH,
-    filename: "js/main.js"
+    filename: "js/main.min.js"
   },
   module: {
     rules: [
@@ -32,7 +32,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].css"
+      filename: "css/[name].min.css"
     })
   ],
   devServer: {
