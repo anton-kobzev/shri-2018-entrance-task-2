@@ -46,6 +46,7 @@
     "defaultSeverity": "warning"
   },
   "dependencies": {
+    "d3": "^5.5.0",
     "tiny-slider": "^2.8.3"
   }
 }

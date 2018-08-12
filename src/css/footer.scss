@@ -16,6 +16,7 @@ $footer-text-color: #858585;
     color: $footer-text-color;
     margin-right: 20px;
     transition: color 0.3s;
+    white-space: nowrap;
 
     &:hover {
       color: $text-accent-color;
@@ -23,6 +24,17 @@ $footer-text-color: #858585;
   }
 
   @media (max-width: $small-viewport) {
+    padding: 20px;
     position: static;
+    display: block;
+
+    &__link {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    &__column {
+      margin-bottom: 20px;
+    }
   }
 }

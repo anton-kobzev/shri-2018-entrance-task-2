@@ -1,0 +1,7 @@
+.circle-control {
+  cursor: pointer;
+
+  &__value-text {
+    user-select: none;
+  }
+}

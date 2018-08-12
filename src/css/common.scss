@@ -5,10 +5,18 @@ $secondary-color-variant: #e6e6e6;
 $text-color: #333333;
 $text-accent-color: #d00;
 
+$popup-animation-duration: 0.5s;
+$popup-animation-timing: cubic-bezier(0.165, 0.84, 0.44, 1);
+
 $small-viewport: 940px;
 
 $header-width: 92px;
 $footer-width: 64px;
+$content-horizontal-padding: 40px;
+
+$header-height-on-small-viewport: 64px;
+$device-range-control-height-on-small-viewport: 336px;
+$content-horizontal-padding-on-small-viewport: 20px;
 
 * {
   box-sizing: border-box;
@@ -21,23 +29,24 @@ body {
   color: $text-color;
 }
 
-.wrap {
-  transition: filter 0.2s;
-}
-
 .main-content {
   display: grid;
   grid-gap: 30px 26px;
-  padding: 30px 40px;
+  padding: 30px $content-horizontal-padding;
   grid-template-columns: 630px calc(100vw - 630px - 80px - 26px);
+  grid-template-rows: 373px;
   overflow: hidden;
 
   // Прибитие футера книзу
   min-height: calc(100vh - #{$header-width} - #{$footer-width});
 
   @media (max-width: $small-viewport) {
-    padding: 0 20px;
-    grid-template-columns: calc(100vw - 40px);
+    padding: 0 $content-horizontal-padding-on-small-viewport 50px
+      $content-horizontal-padding-on-small-viewport;
+    grid-template-columns: calc(
+      100vw - #{$content-horizontal-padding-on-small-viewport} * 2
+    );
+    grid-template-rows: auto;
   }
 }
 
@@ -49,31 +58,54 @@ body {
   }
 }
 
-.favorite-devices {
-  grid-column: span 2;
-
-  @media (max-width: $small-viewport) {
-    grid-column: initial;
-  }
-}
-
 .favorite-scenarios {
-  .slider__item {
-    width: 200px;
+  max-width: 640px;
+
+  .slider__item-inner {
     height: 100px;
   }
 
   .block__content {
     overflow-x: hidden;
+    overflow-y: scroll;
+    height: calc(100% - 34px);
   }
 
-  .slider {
-    padding: 2px; // Для предотвращения скрытия тени элементов слайдера
-  }
+  @media (max-width: 1000px) {
+    max-width: initial;
 
-  @media (max-width: 1000px) and (min-width: $small-viewport) {
     .block__controls-wrapper {
       display: none;
     }
+  }
+}
+
+.favorite-devices {
+  grid-column: span 2;
+
+  .button_dropdown {
+    display: none;
+  }
+
+  @media (max-width: $small-viewport) {
+    grid-column: initial;
+  }
+
+  @media (max-width: 700px) {
+    .block__buttons {
+      display: none;
+    }
+
+    .device-filter.button_dropdown {
+      display: initial;
+      bottom: 7px;
+    }
+  }
+}
+
+@media (max-width: $small-viewport) {
+  .wrap {
+    padding-top: $header-height-on-small-viewport;
+    transition: filter $popup-animation-duration;
   }
 }

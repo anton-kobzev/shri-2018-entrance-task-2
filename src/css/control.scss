@@ -9,8 +9,9 @@
     margin-right: 0;
   }
 
-  &[aria-disabled="true"] {
+  &.disabled {
     opacity: 0.3;
     cursor: default;
+    pointer-events: none;
   }
 }

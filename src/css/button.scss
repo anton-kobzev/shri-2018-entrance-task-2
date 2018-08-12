@@ -14,15 +14,79 @@
     background-color: $secondary-color-variant;
   }
 
-  &:active {
-    position: relative;
-    top: 1px;
-  }
-
   &_highlight {
     background: $primary-color;
     &:hover {
       background: $primary-color-variant;
+    }
+  }
+
+  &_dropdown {
+    position: relative;
+    padding-right: 30px;
+
+    &::after {
+      background: url(../assets/arrow-left.svg) no-repeat;
+      background-size: contain;
+      content: "";
+      width: 7px;
+      height: 11px;
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      transform: rotate(-90deg);
+      transform-origin: center;
+      transition: transform 0.3s;
+    }
+
+    .button__dropdown-items-wrap {
+      display: none;
+      background: #fff;
+      position: absolute;
+      z-index: 1000000;
+      right: 0;
+      top: 40px;
+      padding: 3px 0;
+      box-shadow: 0 7px 20px -5px rgba(0, 0, 0, 0.2);
+      border: 1px solid #e5e5e5;
+    }
+
+    .button__dropdown-item {
+      display: block;
+      font-weight: normal;
+      padding: 10px 15px 10px 35px;
+      text-align: left;
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        background: #ffeba0;
+      }
+
+      &_selected {
+        background: #ffeba0;
+
+        &::before {
+          background: url(../assets/check.svg) no-repeat;
+          background-size: contain;
+          content: "";
+          height: 15px;
+          position: absolute;
+          left: 14px;
+          top: 10px;
+          width: 15px;
+        }
+      }
+    }
+
+    &-opened {
+      &::after {
+        transform: rotate(90deg);
+      }
+
+      .button__dropdown-items-wrap {
+        display: block;
+      }
     }
   }
 }

@@ -1,0 +1,40 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  background: rgba(51, 51, 51, 0.5);
+  opacity: 0;
+  transition: opacity $popup-animation-duration $popup-animation-timing;
+
+  &_popup {
+    padding: 0 20px;
+  }
+}
+
+@mixin overlay-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+body.header-menu-opened {
+  overflow: hidden;
+
+  .overlay_menu {
+    @include overlay-active;
+  }
+}
+
+body.popup-opened {
+  overflow: hidden;
+
+  .wrap {
+    filter: blur(2px);
+  }
+
+  .overlay_popup {
+    @include overlay-active;
+  }
+}

@@ -1,25 +1,22 @@
-.popup-overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.popup {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(51, 51, 51, 0.5);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
+  transform-origin: left top;
+
+  &_opened {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
 }
 
-body.popup-opened {
-  .wrap {
-    filter: blur(3px);
-  }
+.popup-container {
+  opacity: 0;
+  transition: opacity $popup-animation-duration $popup-animation-timing;
+  pointer-events: none;
 
-  .popup-overlay {
+  body.popup-opened & {
     opacity: 1;
     pointer-events: all;
+    transition: opacity 0.2s;
   }
 }

@@ -16,4 +16,39 @@
       color: $text-color;
     }
   }
+
+  &__hamburger {
+    display: none;
+  }
+
+  @media (max-width: $small-viewport) {
+    &__hamburger {
+      display: block;
+    }
+
+    &__collapse {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: #fff;
+      width: 100vw;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 3px 5px 0 #00000014;
+    }
+
+    &__item {
+      font-size: 15px;
+    }
+
+    &__item:last-child {
+      margin-right: 0;
+    }
+
+    &_opened {
+      .menu__collapse {
+        display: block;
+      }
+    }
+  }
 }
