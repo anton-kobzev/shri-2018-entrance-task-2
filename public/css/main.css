@@ -419,7 +419,7 @@ body.popup-opened .popup-container {
   .range-control {
     -webkit-transform: rotate(-90deg);
     -webkit-transform-origin: right;
-    max-width: calc(64vh - 170px);
+    max-width: calc(73vh - 170px);
     position: absolute;
     right: 50%;
     top: -30px;
@@ -524,14 +524,16 @@ body.popup-opened .popup-container {
     background: #fff;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.07843);
     display: none;
-    padding: 20px;
+    padding: 10px 20px 20px;
     position: absolute;
     right: 0;
     text-align: center;
     width: 100vw;
   }
   .menu__item {
+    display: inline-block;
     font-size: 15px;
+    margin-top: 10px;
   }
   .menu__item:last-child {
     margin-right: 0;
@@ -852,7 +854,7 @@ body.popup-opened .popup-container {
     background-size: cover;
     border-radius: 30px;
     flex-direction: column;
-    height: 282px;
+    height: auto;
     justify-content: flex-start;
   }
   .main-dashboard__header {
@@ -952,7 +954,7 @@ body.popup-opened .popup-container {
 }
 @media (max-width: 940px) {
   .device-popup__inner {
-    height: 64vh;
+    height: 73vh;
     max-width: 335px;
     position: relative;
     width: calc(100vw - 40px);
