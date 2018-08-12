@@ -3,7 +3,7 @@
   border-radius: 20px;
   font-weight: bold;
   font-size: 13px;
-  color: #000000;
+  color: #000;
   text-align: center;
   padding: 8px 15px;
   border: none;
@@ -16,6 +16,7 @@
 
   &_highlight {
     background: $primary-color;
+
     &:hover {
       background: $primary-color-variant;
     }

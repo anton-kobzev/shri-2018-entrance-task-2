@@ -1,4 +1,3 @@
-import { tns } from "tiny-slider/src/tiny-slider";
 import { initDropdownButtons } from "./button";
 import { showDevicePopup } from "./popup";
 import Slider from "./slider";
