@@ -74,7 +74,10 @@
 
   @media (max-width: $small-viewport) {
     &__inner {
+      width: calc(100vw - 40px);
+      height: 64vh;
       max-width: 335px;
+      position: relative;
     }
 
     &__title {
@@ -92,6 +95,7 @@
     &__buttons-wrapper {
       display: flex;
       overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
       margin-top: 15px;
       margin-right: -25px;
       margin-left: -25px;
@@ -132,7 +136,13 @@
 
     &__controls-wrapper {
       position: relative;
-      height: $device-range-control-height-on-small-viewport;
+
+      &_circle-control {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 }

@@ -41,7 +41,7 @@ body {
   min-height: calc(100vh - #{$header-width} - #{$footer-width});
 
   @media (max-width: $small-viewport) {
-    padding: 0 $content-horizontal-padding-on-small-viewport 50px
+    padding: 0 $content-horizontal-padding-on-small-viewport 40px
       $content-horizontal-padding-on-small-viewport;
     grid-template-columns: calc(
       100vw - #{$content-horizontal-padding-on-small-viewport} * 2
@@ -68,6 +68,7 @@ body {
   .block__content {
     overflow-x: hidden;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     height: calc(100% - 34px);
   }
 

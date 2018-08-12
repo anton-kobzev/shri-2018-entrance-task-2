@@ -124,7 +124,7 @@ export function showDevicePopup(deviceElem) {
                     <span class="device-popup__icon icon icon_temperature icon_highlight"></span>
                 </div>
             </div>
-            <div class="device-popup__controls-wrapper">
+            <div class="device-popup__controls-wrapper device-popup__controls-wrapper_circle-control">
                 <div class="device-popup__control circle-control"></div>
             </div>
         </div>
