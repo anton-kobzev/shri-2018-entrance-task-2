@@ -177,7 +177,7 @@ $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
 
   @media (max-width: $small-viewport) {
     width: $device-range-control-height-on-small-viewport;
-    max-width: calc(73vh - 170px);
+    max-width: calc(70vh - 170px);
     position: absolute;
     top: -$bar-height / 2;
     right: 50%;
