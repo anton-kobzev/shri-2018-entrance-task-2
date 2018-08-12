@@ -419,7 +419,7 @@ body.popup-opened .popup-container {
   .range-control {
     -webkit-transform: rotate(-90deg);
     -webkit-transform-origin: right;
-    max-width: calc(73vh - 170px);
+    max-width: calc(70vh - 170px);
     position: absolute;
     right: 50%;
     top: -30px;
@@ -954,7 +954,8 @@ body.popup-opened .popup-container {
 }
 @media (max-width: 940px) {
   .device-popup__inner {
-    height: 73vh;
+    height: 70vh;
+    margin-top: 10px;
     max-width: 335px;
     position: relative;
     width: calc(100vw - 40px);
