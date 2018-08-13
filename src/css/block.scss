@@ -45,6 +45,8 @@ $block-header-margin-bottom: 20px;
   }
 
   @media (max-width: $small-viewport) {
+    width: auto;
+
     &_with-slider {
       margin-right: -$content-horizontal-padding-on-small-viewport;
       margin-left: -$content-horizontal-padding-on-small-viewport;
@@ -54,11 +56,16 @@ $block-header-margin-bottom: 20px;
         margin-right: $content-horizontal-padding-on-small-viewport;
       }
 
+      .block__content {
+        overflow: initial;
+      }
+
       .block__controls-wrapper {
         display: none;
       }
 
       .slider {
+        width: 100vw;
         margin-right: 0;
         margin-left: 0;
         padding-left: $content-horizontal-padding-on-small-viewport;
