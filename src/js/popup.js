@@ -1,5 +1,5 @@
 import RangeControl from "./range-control";
-import CircleRegulator from "./circle-control";
+import CirlceControl from "./circle-control";
 
 const popupContainer = document.querySelector(".popup-container");
 const overlay = document.querySelector(".overlay_popup");
@@ -8,14 +8,23 @@ overlay.addEventListener("click", e => {
 });
 
 window.togglePopup = () => {
-  setTimeout(() => {
-    const popup = document.querySelector(".popup");
-    if (popup) {
-      popup.style.transition = "all .5s cubic-bezier(0.165, 0.84, 0.44, 1)";
-      popup.classList.toggle("popup_opened");
-    }
-    document.body.classList.toggle("popup-opened");
-  }, 10);
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const transitionDuration = 500,
+        popup = document.querySelector(".popup");
+
+      if (popup) {
+        popup.style.transition = `all ${transitionDuration}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
+        popup.classList.toggle("popup_opened");
+      }
+
+      document.body.classList.toggle("popup-opened");
+
+      setTimeout(() => {
+        resolve();
+      }, transitionDuration);
+    }, 10);
+  });
 };
 
 function animateOpen(popup, deviceElem) {
@@ -26,7 +35,7 @@ function animateOpen(popup, deviceElem) {
   popup.style.top = rect.top + "px";
   popup.style.transform = `scale(${scale})`;
 
-  togglePopup();
+  return togglePopup();
 }
 
 export function showDevicePopup(deviceElem) {
@@ -135,16 +144,23 @@ export function showDevicePopup(deviceElem) {
     </div>`;
 
     const popup = document.querySelector(".device-popup"),
-      popupValue = popup.querySelector(".device-popup__value");
-    new CircleRegulator(".device-popup__control.circle-control", {
-      size: 220,
-      stroke: 24,
-      value: 23,
-      maxValue: 26,
-      onValueChange: value => {
-        popupValue.innerHTML = value;
-      }
+      popupValue = popup.querySelector(".device-popup__value"),
+      circleControl = new CirlceControl(
+        ".device-popup__control.circle-control",
+        {
+          size: 220,
+          stroke: 24,
+          value: 23,
+          maxValue: 26,
+          addEventsListeners: false,
+          onValueChange: value => {
+            popupValue.innerHTML = value;
+          }
+        }
+      );
+
+    animateOpen(popup, deviceElem).then(() => {
+      circleControl.addEventsListeners();
     });
-    animateOpen(popup, deviceElem);
   }
 }

@@ -15,7 +15,10 @@ export default class CirlceControl {
 
     this.renderInitial();
     this.setValue(options.value);
-    this.addEventsListeners();
+
+    if (options.addEventsListeners) {
+      this.addEventsListeners();
+    }
   }
 
   renderInitial() {
@@ -41,7 +44,8 @@ export default class CirlceControl {
       .attr("cy", this.center)
       .attr("r", this.radius)
       .attr("stroke", "#333")
-      .attr("stroke-width", this.stroke * 2);
+      .attr("stroke-width", this.stroke * 2)
+      .attr("draggable", "false");
 
     const sectorArc = d3
       .arc()
@@ -56,7 +60,8 @@ export default class CirlceControl {
       .attr("stroke", "#F5A623")
       .attr("stroke-width", this.stroke)
       .attr("transform", `translate(${this.center}, ${this.center})`)
-      .attr("d", sectorArc);
+      .attr("d", sectorArc)
+      .attr("draggable", "false");
 
     this.svg
       .append("circle")
@@ -66,7 +71,8 @@ export default class CirlceControl {
       .attr("r", this.radius + this.stroke)
       .attr("stroke", "#fff")
       .attr("stroke-width", this.stroke * 2)
-      .attr("stroke-dasharray", "4,1");
+      .attr("stroke-dasharray", "4,1")
+      .attr("draggable", "false");
 
     // Скрытие нижнего сектора
     const hideArc = d3
@@ -91,7 +97,8 @@ export default class CirlceControl {
       .attr("cx", this.center)
       .attr("cy", this.center)
       .attr("r", this.radius)
-      .attr("filter", "url(#filter-2)");
+      .attr("filter", "url(#filter-2)")
+      .attr("draggable", "false");
 
     this.circle = this.svg.append("g");
     this.circle
@@ -99,7 +106,8 @@ export default class CirlceControl {
       .attr("fill", "white")
       .attr("cx", this.center)
       .attr("cy", this.center)
-      .attr("r", this.radius);
+      .attr("r", this.radius)
+      .attr("draggable", "false");
 
     // Стрелочка
     this.circle
@@ -148,14 +156,20 @@ export default class CirlceControl {
   }
 
   addEventsListeners() {
-    const elem = document.querySelector(this.elem);
+    const elem = document.querySelector(this.elem),
+      { x, y } = elem.querySelector("svg").getBoundingClientRect();
+
     elem.addEventListener("mousemove", e => {
       if (e.buttons == 1) {
-        this.click(e.offsetX, e.offsetY);
+        this.click(e.clientX - x, e.clientY - y);
+        e.preventDefault();
       }
     });
     elem.addEventListener("click", e => {
-      this.click(e.offsetX, e.offsetY);
+      this.click(e.clientX - x, e.clientY - y);
+    });
+    elem.addEventListener("touchmove", e => {
+      this.click(e.touches[0].clientX - x, e.touches[0].clientY - y);
     });
   }
 
