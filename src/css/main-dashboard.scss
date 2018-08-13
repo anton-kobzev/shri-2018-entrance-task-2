@@ -14,6 +14,18 @@
     padding: 5px;
   }
 
+  &__column-2 {
+    width: $slider-item-width + 2;
+    height: 332px;
+    margin-top: -20px;
+    position: relative;
+    overflow: hidden;
+
+    .slider {
+      overflow: initial;
+    }
+  }
+
   &__header {
     font-weight: bold;
     font-size: 27px;
@@ -45,14 +57,11 @@
     letter-spacing: 0;
   }
 
-  &__column-2 {
-    height: 332px;
-    margin-top: -20px;
-  }
-
   &__vertical-slider-wrapper {
     padding-top: 20px;
     height: 100%;
+    position: absolute;
+    left: 0;
   }
 
   @media (max-width: $small-viewport) {
@@ -85,6 +94,8 @@
     }
 
     &__column-2 {
+      position: static;
+      width: auto;
       height: auto;
       margin: 8px -20px -20px;
       overflow: scroll;
@@ -105,6 +116,7 @@
     }
 
     &__vertical-slider-wrapper {
+      position: relative;
       padding-top: 0;
     }
   }

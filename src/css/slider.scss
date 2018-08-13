@@ -1,7 +1,3 @@
-$slider-item-width: 200px;
-$slider-item-height: 120px;
-$slider-item-margin: 15px;
-
 .slider {
   display: flex;
   padding: 2px;
@@ -142,12 +138,18 @@ $slider-item-margin: 15px;
     &__right_padding {
       padding-right: 5px;
     }
+
+    .vertical-slider-wrapper {
+      overflow-x: scroll;
+      overflow-y: initial;
+    }
   }
 }
 
 .vertical-slider-wrapper {
   position: relative;
-  overflow: scroll;
+  overflow-x: initial;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
