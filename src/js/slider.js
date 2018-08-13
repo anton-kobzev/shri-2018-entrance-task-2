@@ -69,7 +69,7 @@ export default class Slider {
   }
 
   getScrollBy() {
-    // TODO: возможность листания секций убрать в параметры, пока для простоты так
+    // TODO: возможность листания секциями убрать в параметры, пока для простоты так
     if (
       this.scrollElem.classList.contains("slider_with-sections") &&
       window.innerWidth > 1365
