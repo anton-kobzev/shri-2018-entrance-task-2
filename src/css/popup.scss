@@ -1,6 +1,8 @@
 .popup {
   position: fixed;
   transform-origin: left top;
+  opacity: 0;
+  transition: opacity 0.2s;
 
   &_opened {
     top: 50% !important;
@@ -18,5 +20,9 @@
     opacity: 1;
     pointer-events: all;
     transition: opacity 0.2s;
+
+    .popup {
+      opacity: 1;
+    }
   }
 }

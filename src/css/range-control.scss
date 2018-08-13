@@ -21,11 +21,7 @@ $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
     width: 100%;
     height: $bar-height;
     position: absolute;
-
-    // Internet Explorer
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      display: none;
-    }
+    top: 2px;
   }
 
   &__input {
@@ -36,12 +32,12 @@ $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
     background: transparent;
     padding: 0;
     cursor: pointer;
-    margin-left: -1px;
+    margin-left: -3px;
 
     &::-moz-focus-outer {
       border: 0;
     }
-    // webkit
+
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       border: $cursor-border-size solid $cursor-border;
@@ -52,7 +48,7 @@ $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
       background: $cursor-color;
       cursor: pointer;
       position: relative;
-      top: -4px;
+      top: -2px;
     }
 
     &::-webkit-slider-runnable-track {
@@ -63,12 +59,11 @@ $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
       border-radius: $border-radius;
     }
 
-    // Firefox
     &::-moz-range-thumb {
       border: $cursor-border-size solid $cursor-border;
       box-shadow: inset $cursor-shadow;
-      width: $cursor-size - 6px;
-      height: $cursor-size - 6px;
+      width: $cursor-size - 5;
+      height: $cursor-size - 5;
       border-radius: 50%;
       background: $cursor-color;
       cursor: pointer;
@@ -83,32 +78,27 @@ $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
       border-radius: $border-radius;
     }
 
-    // Edge
     &::-ms-thumb {
+      border: none;
       box-shadow: 0 0 0 $cursor-border-size $cursor-border, inset $cursor-shadow;
-      height: $cursor-size;
-      width: $cursor-size;
+      width: $cursor-size - 3;
+      height: $cursor-size - 3;
       border-radius: 50%;
       background: $cursor-color;
       cursor: pointer;
-      margin-top: 2px;
-      box-sizing: border-box;
-      border: 0;
     }
 
     &::-ms-track {
-      width: 100%;
       height: $bar-height;
-      border-color: transparent;
+      border: none;
       cursor: pointer;
       background: $bar-color;
       border-radius: $border-radius;
       color: transparent;
-      box-sizing: border-box;
     }
 
     &::-ms-fill-lower {
-      background: $bar-fill;
+      background: transparent;
       border-radius: $border-radius;
     }
 
@@ -134,7 +124,7 @@ $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
     font-size: 18px;
     color: #fff;
     position: absolute;
-    top: 20px;
+    top: 21px;
     pointer-events: none;
 
     &_min {

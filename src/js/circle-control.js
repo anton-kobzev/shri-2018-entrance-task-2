@@ -22,8 +22,8 @@ export default class CirlceControl {
     this.svg = d3
       .select(this.elem)
       .append("svg")
-      .attr("width", this.size + "px")
-      .attr("height", this.size + "px")
+      .attr("width", this.size + 1 + "px")
+      .attr("height", this.size + 1 + "px")
       .attr("draggable", "false");
 
     this.svg.append("defs").html(
@@ -72,7 +72,7 @@ export default class CirlceControl {
     const hideArc = d3
       .arc()
       .innerRadius(this.radius)
-      .outerRadius(this.radius + this.stroke)
+      .outerRadius(this.radius + this.stroke * 1.2)
       .startAngle(this.startAngle)
       .endAngle(this.startAngle - (Math.PI + this.startAngle) * 2);
 

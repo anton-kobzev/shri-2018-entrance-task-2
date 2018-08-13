@@ -24,7 +24,7 @@ function animateOpen(popup, deviceElem) {
 
   popup.style.left = rect.left + "px";
   popup.style.top = rect.top + "px";
-  popup.style.transform = `scale(${scale}`;
+  popup.style.transform = `scale(${scale})`;
 
   togglePopup();
 }
