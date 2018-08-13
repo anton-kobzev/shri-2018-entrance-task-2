@@ -38,9 +38,13 @@ export default class Slider {
       });
     });
 
-    this.scrollElem.addEventListener("scroll", e => {
-      this.refresh();
-    });
+    this.scrollElem.addEventListener(
+      "scroll",
+      e => {
+        this.refresh();
+      },
+      { passive: true }
+    );
   }
 
   refresh() {
@@ -73,6 +77,6 @@ export default class Slider {
       return 200 * 3 + 15 * 3 + 3;
     }
 
-    return 215;
+    return 300;
   }
 }

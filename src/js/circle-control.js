@@ -13,10 +13,9 @@ export default class CirlceControl {
 
     this.onValueChange = options.onValueChange;
 
-    this.renderInitial();
     this.setValue(options.value);
 
-    if (options.addEventsListeners) {
+    if (options.addEventsListeners !== false) {
       this.addEventsListeners();
     }
   }
@@ -134,6 +133,11 @@ export default class CirlceControl {
   }
 
   render() {
+    if (!this.initialized) {
+      this.renderInitial();
+      this.initialized = true;
+    }
+
     const sectorArc = d3
       .arc()
       .innerRadius(this.radius)
@@ -167,9 +171,11 @@ export default class CirlceControl {
     });
     elem.addEventListener("click", e => {
       this.click(e.clientX - x, e.clientY - y);
+      e.preventDefault();
     });
     elem.addEventListener("touchmove", e => {
       this.click(e.touches[0].clientX - x, e.touches[0].clientY - y);
+      e.preventDefault();
     });
   }
 

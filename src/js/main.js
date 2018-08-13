@@ -4,15 +4,25 @@ import Slider from "./slider";
 import Filter from "./filter";
 
 window.onload = () => {
-  initDropdownButtons();
+  if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+    document.body.classList.add("is-firefox");
+  }
 
-  document.addEventListener("scroll", e => {
-    if (window.scrollY > 7) {
-      document.body.classList.add("scrolled");
-    } else {
-      document.body.classList.remove("scrolled");
-    }
-  });
+  if (window.innerWidth < 940) {
+    document.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 7) {
+          document.body.classList.add("scrolled");
+        } else {
+          document.body.classList.remove("scrolled");
+        }
+      },
+      { passive: true }
+    );
+  }
+
+  initDropdownButtons();
 
   const menu = document.querySelector(".header__menu");
   menu.querySelector(".menu__hamburger").addEventListener("click", () => {
@@ -24,9 +34,13 @@ window.onload = () => {
 
   // Скрытие подсказки при прокрутке вертикального слайдера
   document.querySelectorAll(".scroll-tip-wrapper").forEach(elem => {
-    elem.addEventListener("scroll", e => {
-      e.target.querySelector(".slider__tip-wrapper").style.opacity = 0;
-    });
+    elem.addEventListener(
+      "scroll",
+      e => {
+        e.target.querySelector(".slider__tip-wrapper").style.opacity = 0;
+      },
+      { passive: true }
+    );
   });
 
   const favoriteDevicesSlider = new Slider(

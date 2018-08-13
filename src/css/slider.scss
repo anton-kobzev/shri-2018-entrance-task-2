@@ -3,7 +3,6 @@
   padding: 2px;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
-
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
@@ -84,6 +83,7 @@
       }
 
       @media (max-width: 1310px) {
+        align-items: center;
         grid-template-columns: repeat(2, 1fr);
         grid-auto-flow: column;
       }
@@ -174,5 +174,12 @@
   .slider__tip {
     width: 16px;
     height: 16px;
+  }
+}
+
+body.is-firefox {
+  .slider_with-sections {
+    box-sizing: content-box;
+    padding-bottom: 17px;
   }
 }

@@ -10,8 +10,8 @@ $text-accent-color: #d00;
 $popup-animation-duration: 0.5s;
 $popup-animation-timing: cubic-bezier(0.165, 0.84, 0.44, 1);
 
-$header-width: 92px;
-$footer-width: 64px;
+// Sizes
+$header-height: 92px;
 $content-horizontal-padding: 40px;
 $header-height-on-small-viewport: 64px;
 $device-range-control-height-on-small-viewport: 336px;
@@ -42,11 +42,11 @@ body {
   grid-gap: 30px 26px;
   padding: 30px $content-horizontal-padding 0 $content-horizontal-padding;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: auto auto;
   overflow: hidden;
 
   // Прибитие футера книзу
-  min-height: calc(100vh - #{$header-width} - #{$footer-width});
+  min-height: calc(100vh - #{$header-height} - 48px);
 
   @media (max-width: 1310px) {
     grid-template-columns: 630px calc(100vw - 630px - 80px - 26px);
@@ -61,6 +61,7 @@ body {
     grid-template-rows: auto;
   }
 }
+
 .main-info {
   @media (max-width: $small-viewport) {
     .block__header {
@@ -68,45 +69,60 @@ body {
     }
   }
 }
+
 .favorite-scenarios {
   max-width: 640px;
-  max-height: 331px;
+
   .slider__item-inner {
     height: 100px;
   }
+
   .block__content {
-    overflow-x: hidden;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     height: calc(100% - 34px);
   }
+
   @media (max-width: 1000px) {
     max-width: initial;
+
     .block__content {
       max-height: 338px;
     }
+
     .block__controls-wrapper {
       display: none;
     }
   }
 }
+
 .favorite-devices {
   grid-column: span 2;
+
   .button_dropdown {
     display: none;
   }
+
+  .slider {
+    height: $slider-item-height + $slider-item-margin !important;
+  }
+
   @media (max-width: $small-viewport) {
     grid-column: initial;
   }
+
   @media (max-width: 700px) {
     .block__buttons {
       display: none;
     }
+
     .device-filter.button_dropdown {
       display: initial;
       bottom: 7px;
     }
   }
 }
+
 @media (max-width: $small-viewport) {
   .wrap {
     padding-top: $header-height-on-small-viewport;
