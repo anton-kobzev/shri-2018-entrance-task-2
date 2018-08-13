@@ -1,8 +1,13 @@
 .slider {
   display: flex;
   padding: 2px;
-  overflow: scroll;
+  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__item {
     width: $slider-item-width;
