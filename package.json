@@ -1,72 +1,72 @@
 {
-    "name": "entrance-task-2-2",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "repository": "https://github.com/anton-kobzev/shri-2018-entrance-task-2.git",
-    "homepage": "https://anton-kobzev.github.io/shri-2018-entrance-task-2/",
-    "scripts": {
-        "build": "webpack --mode production --colors --progress",
-        "start": "webpack-dev-server --mode development --hot --colors --progress",
-        "lint:css": "stylelint src/**/*.scss --fix",
-        "precommit": "pretty-quick --staged && npm run lint:css",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d public"
+  "name": "entrance-task-2-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": "https://github.com/anton-kobzev/shri-2018-entrance-task-2.git",
+  "homepage": "https://anton-kobzev.github.io/shri-2018-entrance-task-2/",
+  "scripts": {
+    "build": "webpack --mode production --colors --progress",
+    "start": "webpack-dev-server --mode development --hot --colors --progress",
+    "lint:css": "stylelint src/**/*.scss --fix",
+    "precommit": "pretty-quick --staged && npm run lint:css",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.0.2",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.0.5",
+    "file-loader": "^1.1.11",
+    "gh-pages": "^1.2.0",
+    "husky": "^0.14.3",
+    "image-webpack-loader": "^4.3.1",
+    "mini-css-extract-plugin": "^0.4.1",
+    "postcss-loader": "^2.1.6",
+    "postcss-preset-env": "^5.3.0",
+    "prettier": "1.14.0",
+    "pretty-quick": "^1.6.0",
+    "resolve-url-loader": "^2.3.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "stylelint": "^9.4.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-no-unsupported-browser-features": "^3.0.1",
+    "stylelint-scss": "^3.2.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {
+    "d3": "^5.5.0"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-scss",
+      "stylelint-config-prettier"
+    ],
+    "plugins": [
+      "stylelint-no-unsupported-browser-features"
+    ],
+    "rules": {
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "extends",
+            "include",
+            "mixin"
+          ]
+        }
+      ],
+      "plugin/no-unsupported-browser-features": true
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "autoprefixer": "^9.0.2",
-        "css-loader": "^1.0.0",
-        "cssnano": "^4.0.5",
-        "file-loader": "^1.1.11",
-        "gh-pages": "^1.2.0",
-        "husky": "^0.14.3",
-        "image-webpack-loader": "^4.3.1",
-        "mini-css-extract-plugin": "^0.4.1",
-        "postcss-loader": "^2.1.6",
-        "postcss-preset-env": "^5.3.0",
-        "prettier": "1.14.0",
-        "pretty-quick": "^1.6.0",
-        "resolve-url-loader": "^2.3.0",
-        "sass-loader": "^7.0.3",
-        "style-loader": "^0.21.0",
-        "stylelint": "^9.4.0",
-        "stylelint-config-prettier": "^4.0.0",
-        "stylelint-config-standard": "^18.2.0",
-        "stylelint-no-unsupported-browser-features": "^3.0.1",
-        "stylelint-scss": "^3.2.0",
-        "url-loader": "^1.0.1",
-        "webpack": "^4.16.3",
-        "webpack-cli": "^3.1.0",
-        "webpack-dev-server": "^3.1.5"
-    },
-    "dependencies": {
-        "d3": "^5.5.0"
-    },
-    "stylelint": {
-        "extends": [
-            "stylelint-config-standard",
-            "stylelint-scss",
-            "stylelint-config-prettier"
-        ],
-        "plugins": [
-            "stylelint-no-unsupported-browser-features"
-        ],
-        "rules": {
-            "at-rule-no-unknown": [
-                true,
-                {
-                    "ignoreAtRules": [
-                        "extends",
-                        "include",
-                        "mixin"
-                    ]
-                }
-            ],
-            "plugin/no-unsupported-browser-features": true
-        },
-        "defaultSeverity": "warning"
-    }
+    "defaultSeverity": "warning"
+  }
 }
