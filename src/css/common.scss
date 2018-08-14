@@ -27,105 +27,105 @@ $large-viewport: 1500px;
 $small-viewport: 940px;
 
 * {
-  box-sizing: border-box;
-  outline: none !important;
+    box-sizing: border-box;
+    outline: none !important;
 }
 
 body {
-  margin: 0;
-  font-family: ArialMT, Arial, Helvetica, sans-serif;
-  color: $text-color;
+    margin: 0;
+    font-family: ArialMT, Arial, Helvetica, sans-serif;
+    color: $text-color;
 }
 
 .main-content {
-  display: grid;
-  grid-gap: 30px 26px;
-  padding: 30px $content-horizontal-padding 0 $content-horizontal-padding;
-  grid-template-columns: 4fr 1fr;
-  grid-template-rows: auto auto;
-  overflow: hidden;
+    display: grid;
+    grid-gap: 30px 26px;
+    padding: 30px $content-horizontal-padding 0 $content-horizontal-padding;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: auto auto;
+    overflow: hidden;
 
-  // Прибитие футера книзу
-  min-height: calc(100vh - #{$header-height} - 48px);
+    // Прибитие футера книзу
+    min-height: calc(100vh - #{$header-height} - 48px);
 
-  @media (max-width: 1310px) {
-    grid-template-columns: 630px calc(100vw - 630px - 80px - 26px);
-  }
+    @media (max-width: 1310px) {
+        grid-template-columns: 630px calc(100vw - 630px - 80px - 26px);
+    }
 
-  @media (max-width: $small-viewport) {
-    padding: 0 $content-horizontal-padding-on-small-viewport 40px
-      $content-horizontal-padding-on-small-viewport;
-    grid-template-columns: calc(
-      100vw - #{$content-horizontal-padding-on-small-viewport} * 2
-    );
-    grid-template-rows: auto;
-  }
+    @media (max-width: $small-viewport) {
+        padding: 0 $content-horizontal-padding-on-small-viewport 40px
+            $content-horizontal-padding-on-small-viewport;
+        grid-template-columns: calc(
+            100vw - #{$content-horizontal-padding-on-small-viewport} * 2
+        );
+        grid-template-rows: auto;
+    }
 }
 
 .main-info {
-  @media (max-width: $small-viewport) {
-    .block__header {
-      display: none;
+    @media (max-width: $small-viewport) {
+        .block__header {
+            display: none;
+        }
     }
-  }
 }
 
 .favorite-scenarios {
-  max-width: 640px;
+    max-width: 640px;
 
-  .slider__item-inner {
-    height: 100px;
-  }
-
-  .block__content {
-    overflow: hidden;
-    -webkit-overflow-scrolling: touch;
-    height: calc(100% - 34px);
-  }
-
-  @media (max-width: 1000px) {
-    max-width: initial;
+    .slider__item-inner {
+        height: 100px;
+    }
 
     .block__content {
-      max-height: 338px;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        height: calc(100% - 34px);
     }
 
-    .block__controls-wrapper {
-      display: none;
+    @media (max-width: 1000px) {
+        max-width: initial;
+
+        .block__content {
+            max-height: 338px;
+        }
+
+        .block__controls-wrapper {
+            display: none;
+        }
     }
-  }
 }
 
 .favorite-devices {
-  grid-column: span 2;
+    grid-column: span 2;
 
-  .button_dropdown {
-    display: none;
-  }
-
-  .slider {
-    height: $slider-item-height + $slider-item-margin !important;
-  }
-
-  @media (max-width: $small-viewport) {
-    grid-column: initial;
-  }
-
-  @media (max-width: 700px) {
-    .block__buttons {
-      display: none;
+    .button_dropdown {
+        display: none;
     }
 
-    .device-filter.button_dropdown {
-      display: initial;
-      bottom: 7px;
+    .slider {
+        height: $slider-item-height + $slider-item-margin !important;
     }
-  }
+
+    @media (max-width: $small-viewport) {
+        grid-column: initial;
+    }
+
+    @media (max-width: 700px) {
+        .block__buttons {
+            display: none;
+        }
+
+        .device-filter.button_dropdown {
+            display: initial;
+            bottom: 7px;
+        }
+    }
 }
 
 @media (max-width: $small-viewport) {
-  .wrap {
-    padding-top: $header-height-on-small-viewport;
-    transition: filter $popup-animation-duration;
-  }
+    .wrap {
+        padding-top: $header-height-on-small-viewport;
+        transition: filter $popup-animation-duration;
+    }
 }

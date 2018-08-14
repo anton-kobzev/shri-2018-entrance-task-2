@@ -1,61 +1,61 @@
 .icon {
-  display: inline-block;
-  width: 26px;
-  height: 26px;
-  background-size: contain;
-  background-repeat: no-repeat;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-size: contain;
+    background-repeat: no-repeat;
 
-  &_left {
-    background-image: url("../assets/arrow-left.svg");
-  }
-
-  &_right {
-    background-image: url("../assets/arrow-left.svg");
-    transform: rotate(180deg);
-  }
-
-  &_up-double {
-    background-image: url("../assets/arrow-up-double.svg");
-  }
-
-  &_down-double {
-    background-image: url("../assets/arrow-up-double.svg");
-    transform: rotate(180deg);
-  }
-
-  &_hamburger {
-    background-image: url("../assets/icon_list_m@1x.svg");
-  }
-
-  &_cloud-drizzle {
-    background-image: url("../assets/cloud-drizzle.svg");
-  }
-
-  &_sun {
-    background-image: url("../assets/icon_sun.svg");
-
-    &.icon_highlight {
-      background-image: url("../assets/icon_sun_2.svg");
+    &_left {
+        background-image: url("../assets/arrow-left.svg");
     }
-  }
 
-  &_sun-max {
-    background-image: url("../assets/icon_sun_max.svg");
-  }
-
-  &_sun-min {
-    background-image: url("../assets/icon_sun_min.svg");
-  }
-
-  &_temperature {
-    background-image: url("../assets/icon_temperature.svg");
-
-    &.icon_highlight {
-      background-image: url("../assets/icon_temperature_2.svg");
+    &_right {
+        background-image: url("../assets/arrow-left.svg");
+        transform: rotate(180deg);
     }
-  }
 
-  &_scheduled {
-    background-image: url("../assets/icon_scheduled.svg");
-  }
+    &_up-double {
+        background-image: url("../assets/arrow-up-double.svg");
+    }
+
+    &_down-double {
+        background-image: url("../assets/arrow-up-double.svg");
+        transform: rotate(180deg);
+    }
+
+    &_hamburger {
+        background-image: url("../assets/icon_list_m@1x.svg");
+    }
+
+    &_cloud-drizzle {
+        background-image: url("../assets/cloud-drizzle.svg");
+    }
+
+    &_sun {
+        background-image: url("../assets/icon_sun.svg");
+
+        &.icon_highlight {
+            background-image: url("../assets/icon_sun_2.svg");
+        }
+    }
+
+    &_sun-max {
+        background-image: url("../assets/icon_sun_max.svg");
+    }
+
+    &_sun-min {
+        background-image: url("../assets/icon_sun_min.svg");
+    }
+
+    &_temperature {
+        background-image: url("../assets/icon_temperature.svg");
+
+        &.icon_highlight {
+            background-image: url("../assets/icon_temperature_2.svg");
+        }
+    }
+
+    &_scheduled {
+        background-image: url("../assets/icon_scheduled.svg");
+    }
 }

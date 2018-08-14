@@ -10,165 +10,166 @@ $cursor-border: #fff;
 $cursor-shadow: 0 0 0 ($cursor-border-size - 1) rgba(51, 51, 51, 0.1);
 
 .range-control {
-  position: relative;
-  height: $bar-height;
-
-  &__fill {
-    box-sizing: border-box;
-    display: inline-block;
-    background: #aaa;
-    border-radius: $border-radius;
-    width: 100%;
+    position: relative;
     height: $bar-height;
-    position: absolute;
-    top: 2px;
-  }
 
-  &__input {
-    position: absolute;
-    width: 101%;
-    height: 100%;
-    appearance: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-    margin-left: -3px;
-
-    &::-moz-focus-outer {
-      border: 0;
+    &__fill {
+        box-sizing: border-box;
+        display: inline-block;
+        background: #aaa;
+        border-radius: $border-radius;
+        width: 100%;
+        height: $bar-height;
+        position: absolute;
+        top: 2px;
     }
 
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      border: $cursor-border-size solid $cursor-border;
-      box-shadow: inset $cursor-shadow;
-      height: $cursor-size;
-      width: $cursor-size;
-      border-radius: 50%;
-      background: $cursor-color;
-      cursor: pointer;
-      position: relative;
-      top: -2px;
+    &__input {
+        position: absolute;
+        width: 101%;
+        height: 100%;
+        appearance: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        margin-left: -3px;
+
+        &::-moz-focus-outer {
+            border: 0;
+        }
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: $cursor-border-size solid $cursor-border;
+            box-shadow: inset $cursor-shadow;
+            height: $cursor-size;
+            width: $cursor-size;
+            border-radius: 50%;
+            background: $cursor-color;
+            cursor: pointer;
+            position: relative;
+            top: -2px;
+        }
+
+        &::-webkit-slider-runnable-track {
+            width: 100%;
+            height: $bar-height;
+            cursor: pointer;
+            background: $bar-color;
+            border-radius: $border-radius;
+        }
+
+        &::-moz-range-thumb {
+            border: $cursor-border-size solid $cursor-border;
+            box-shadow: inset $cursor-shadow;
+            width: $cursor-size - 5;
+            height: $cursor-size - 5;
+            border-radius: 50%;
+            background: $cursor-color;
+            cursor: pointer;
+        }
+
+        &::-moz-range-track {
+            box-sizing: border-box;
+            width: 100%;
+            height: $bar-height;
+            cursor: pointer;
+            background: $bar-color;
+            border-radius: $border-radius;
+        }
+
+        &::-ms-thumb {
+            border: none;
+            box-shadow: 0 0 0 $cursor-border-size $cursor-border,
+                inset $cursor-shadow;
+            width: $cursor-size - 3;
+            height: $cursor-size - 3;
+            border-radius: 50%;
+            background: $cursor-color;
+            cursor: pointer;
+        }
+
+        &::-ms-track {
+            height: $bar-height;
+            border: none;
+            cursor: pointer;
+            background: $bar-color;
+            border-radius: $border-radius;
+            color: transparent;
+        }
+
+        &::-ms-fill-lower {
+            background: transparent;
+            border-radius: $border-radius;
+        }
+
+        &::-ms-fill-upper {
+            background: $bar-color;
+        }
+
+        &::-ms-tooltip {
+            display: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
     }
 
-    &::-webkit-slider-runnable-track {
-      width: 100%;
-      height: $bar-height;
-      cursor: pointer;
-      background: $bar-color;
-      border-radius: $border-radius;
+    &:focus::-ms-thumb {
+        border: 0;
     }
-
-    &::-moz-range-thumb {
-      border: $cursor-border-size solid $cursor-border;
-      box-shadow: inset $cursor-shadow;
-      width: $cursor-size - 5;
-      height: $cursor-size - 5;
-      border-radius: 50%;
-      background: $cursor-color;
-      cursor: pointer;
-    }
-
-    &::-moz-range-track {
-      box-sizing: border-box;
-      width: 100%;
-      height: $bar-height;
-      cursor: pointer;
-      background: $bar-color;
-      border-radius: $border-radius;
-    }
-
-    &::-ms-thumb {
-      border: none;
-      box-shadow: 0 0 0 $cursor-border-size $cursor-border, inset $cursor-shadow;
-      width: $cursor-size - 3;
-      height: $cursor-size - 3;
-      border-radius: 50%;
-      background: $cursor-color;
-      cursor: pointer;
-    }
-
-    &::-ms-track {
-      height: $bar-height;
-      border: none;
-      cursor: pointer;
-      background: $bar-color;
-      border-radius: $border-radius;
-      color: transparent;
-    }
-
-    &::-ms-fill-lower {
-      background: transparent;
-      border-radius: $border-radius;
-    }
-
-    &::-ms-fill-upper {
-      background: $bar-color;
-    }
-
-    &::-ms-tooltip {
-      display: none;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &:focus::-ms-thumb {
-    border: 0;
-  }
-
-  &__bound {
-    font-weight: bold;
-    font-size: 18px;
-    color: #fff;
-    position: absolute;
-    top: 21px;
-    pointer-events: none;
-
-    &_min {
-      left: 15px;
-    }
-
-    &_max {
-      right: 15px;
-    }
-
-    &_icon {
-      .icon {
-        width: 38px;
-        height: 38px;
-        position: relative;
-        bottom: 9px;
-      }
-    }
-  }
-
-  &_temperature {
-    .range-control__fill {
-      background: linear-gradient(to right, #068fff, #ffd800, #f76b1c);
-    }
-  }
-
-  &_light {
-    .range-control__fill {
-      background: linear-gradient(to right, #ffe682, #ff9e00);
-    }
-  }
-
-  @media (max-width: $small-viewport) {
-    width: $device-range-control-height-on-small-viewport;
-    max-width: calc(70vh - 170px);
-    position: absolute;
-    top: -$bar-height / 2;
-    right: 50%;
-    transform: rotate(-90deg);
-    transform-origin: right;
 
     &__bound {
-      transform: rotate(90deg);
-      bottom: 20px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #fff;
+        position: absolute;
+        top: 21px;
+        pointer-events: none;
+
+        &_min {
+            left: 15px;
+        }
+
+        &_max {
+            right: 15px;
+        }
+
+        &_icon {
+            .icon {
+                width: 38px;
+                height: 38px;
+                position: relative;
+                bottom: 9px;
+            }
+        }
     }
-  }
+
+    &_temperature {
+        .range-control__fill {
+            background: linear-gradient(to right, #068fff, #ffd800, #f76b1c);
+        }
+    }
+
+    &_light {
+        .range-control__fill {
+            background: linear-gradient(to right, #ffe682, #ff9e00);
+        }
+    }
+
+    @media (max-width: $small-viewport) {
+        width: $device-range-control-height-on-small-viewport;
+        max-width: calc(70vh - 170px);
+        position: absolute;
+        top: -$bar-height / 2;
+        right: 50%;
+        transform: rotate(-90deg);
+        transform-origin: right;
+
+        &__bound {
+            transform: rotate(90deg);
+            bottom: 20px;
+        }
+    }
 }
