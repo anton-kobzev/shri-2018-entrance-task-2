@@ -161,7 +161,9 @@ export default class CirlceControl {
 
   addEventsListeners() {
     const elem = document.querySelector(this.elem),
-      { x, y } = elem.querySelector("svg").getBoundingClientRect();
+      rect = elem.querySelector("svg").getBoundingClientRect(),
+      x = rect.left,
+      y = rect.top;
 
     elem.addEventListener("mousemove", e => {
       if (e.buttons == 1) {
@@ -173,10 +175,14 @@ export default class CirlceControl {
       this.click(e.clientX - x, e.clientY - y);
       e.preventDefault();
     });
-    elem.addEventListener("touchmove", e => {
-      this.click(e.touches[0].clientX - x, e.touches[0].clientY - y);
-      e.preventDefault();
-    });
+    elem.addEventListener(
+      "touchmove",
+      e => {
+        this.click(e.touches[0].clientX - x, e.touches[0].clientY - y);
+        e.preventDefault();
+      },
+      { passive: true }
+    );
   }
 
   click(clickX, clickY) {
