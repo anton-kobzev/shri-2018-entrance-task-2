@@ -1,15 +1,17 @@
 import RangeControl from "./range-control"
 import CirlceControl from "./circle-control"
 
-const popupContainer = document.querySelector(".popup-container"),
-    overlay = document.querySelector(".overlay_popup")
-overlay.addEventListener("click", e => {
-    if (e.target == overlay) togglePopup()
+const popupContainer = document.querySelector(".popup-container")
+
+popupContainer.addEventListener("click", e => {
+    if (e.target.classList.contains("popup-container")) {
+        togglePopup()
+    }
 })
 
 window.togglePopup = () => {
     return new Promise(resolve => {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             const transitionDuration = 500,
                 popup = document.querySelector(".popup")
 
@@ -23,17 +25,20 @@ window.togglePopup = () => {
             setTimeout(() => {
                 resolve()
             }, transitionDuration)
-        }, 10)
+        })
     })
 }
 
-function animateOpen(popup, deviceElem) {
-    const rect = deviceElem.getBoundingClientRect()
-    const scale = (rect.right - rect.left) / popup.clientWidth
+function animateOpen(popup, device) {
+    const deviceRect = device.getBoundingClientRect(),
+        scale = device.clientWidth / popup.clientWidth,
+        targetX = deviceRect.left + deviceRect.width / 2,
+        targetY = deviceRect.top + deviceRect.height / 2,
+        currentX = window.innerWidth / 2,
+        currentY = window.innerHeight / 2
 
-    popup.style.left = rect.left + "px"
-    popup.style.top = rect.top + "px"
-    popup.style.transform = `scale(${scale})`
+    popup.style.transform = `translate(${targetX - currentX}px, ${targetY -
+        currentY}px) scale(${scale})`
 
     return togglePopup()
 }
