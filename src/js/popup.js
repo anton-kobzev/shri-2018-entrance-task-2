@@ -1,8 +1,8 @@
 import RangeControl from "./range-control"
 import CirlceControl from "./circle-control"
 
-const popupContainer = document.querySelector(".popup-container")
-const overlay = document.querySelector(".overlay_popup")
+const popupContainer = document.querySelector(".popup-container"),
+    overlay = document.querySelector(".overlay_popup")
 overlay.addEventListener("click", e => {
     if (e.target == overlay) togglePopup()
 })
@@ -39,10 +39,7 @@ function animateOpen(popup, deviceElem) {
 }
 
 export function showDevicePopup(deviceElem) {
-    const title = deviceElem.dataset.title,
-        subtitle = deviceElem.dataset.subtitle
-
-    const type = deviceElem.dataset["type"]
+    const { title, subtitle, type } = deviceElem.dataset
 
     if (type == "temperature") {
         popupContainer.innerHTML = `<div class="popup device-popup device-popup_temperature">
@@ -152,7 +149,7 @@ export function showDevicePopup(deviceElem) {
                     stroke: 24,
                     value: 23,
                     maxValue: 26,
-                    addEventsListeners: false,
+                    init: false,
                     onValueChange: value => {
                         popupValue.innerHTML = value
                     }
@@ -160,7 +157,7 @@ export function showDevicePopup(deviceElem) {
             )
 
         animateOpen(popup, deviceElem).then(() => {
-            circleControl.addEventsListeners()
+            circleControl.init()
         })
     }
 }

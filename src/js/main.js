@@ -30,7 +30,15 @@ window.onload = () => {
         document.body.classList.toggle("header-menu-opened")
     })
 
-    // Инициализация слайдеров
+    const favoriteScenariosSlider = new Slider(
+            ".favorite-scenarios .slider",
+            ".favorite-scenarios .block__control",
+            { withSections: true }
+        ),
+        favoriteDevicesSlider = new Slider(
+            ".favorite-devices .slider",
+            ".favorite-devices .block__control"
+        )
 
     // Скрытие подсказки при прокрутке вертикального слайдера
     document.querySelectorAll(".scroll-tip-wrapper").forEach(elem => {
@@ -42,15 +50,6 @@ window.onload = () => {
             { passive: true }
         )
     })
-
-    const favoriteDevicesSlider = new Slider(
-        ".favorite-devices .slider",
-        ".favorite-devices .block__control"
-    )
-    const favoriteScenariosSlider = new Slider(
-        ".favorite-scenarios .slider",
-        ".favorite-scenarios .block__control"
-    )
 
     // Попапы управления устройствами
     document.querySelectorAll(".device").forEach(elem => {

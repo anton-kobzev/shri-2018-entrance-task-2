@@ -1,9 +1,13 @@
 export default class Slider {
-    constructor(scrollElem, controls) {
+    constructor(scrollElem, controls, options) {
         this.scrollElem = document.querySelector(scrollElem)
         this.controls = document.querySelectorAll(controls)
         this.controlLeft = document.querySelector(controls + ".control_left")
         this.controlRight = document.querySelector(controls + ".control_right")
+
+        if (options !== undefined) {
+            this.withSections = options.withSections
+        }
 
         this.addEventListeners()
         this.refresh()
@@ -16,7 +20,7 @@ export default class Slider {
                     currentTime = 0,
                     change = this.getScrollBy(),
                     increment = 5,
-                    duration = 250,
+                    duration = this.withSections ? 90 : 150,
                     scrollToLeft = control.classList.contains("control_left")
 
                 if (scrollToLeft) change *= -1
@@ -30,7 +34,7 @@ export default class Slider {
                         duration
                     )
                     if (currentTime < duration) {
-                        setTimeout(animateScroll, increment)
+                        requestAnimationFrame(animateScroll)
                     }
                 }
 
@@ -40,7 +44,7 @@ export default class Slider {
 
         this.scrollElem.addEventListener(
             "scroll",
-            e => {
+            () => {
                 this.refresh()
             },
             { passive: true }
@@ -61,22 +65,19 @@ export default class Slider {
         }
     }
 
+    getScrollBy() {
+        if (this.withSections) {
+            // Постраничная прокрутка на больших экранах, поэлементная на меньших
+            return window.innerWidth > 1365 ? 648 : 215
+        }
+
+        return 400
+    }
+
     static easeInOutQuad(t, b, c, d) {
         t /= d / 2
         if (t < 1) return (c / 2) * t * t + b
         t--
         return (-c / 2) * (t * (t - 2) - 1) + b
-    }
-
-    getScrollBy() {
-        // TODO: возможность листания секциями убрать в параметры, пока для простоты так
-        if (
-            this.scrollElem.classList.contains("slider_with-sections") &&
-            window.innerWidth > 1365
-        ) {
-            return 200 * 3 + 15 * 3 + 3
-        }
-
-        return 300
     }
 }

@@ -3,8 +3,9 @@ import * as d3 from "d3"
 export default class CirlceControl {
     constructor(elem, options) {
         this.elem = elem
+        this.domElem = document.querySelector(this.elem)
 
-        this.maxValue = options.maxValue
+        this.maxValue = options.maxValue === undefined ? 30 : options.maxValue
         this.size = options.size
         this.center = options.size / 2
         this.radius = options.size / 2 - options.stroke
@@ -12,12 +13,16 @@ export default class CirlceControl {
         this.startAngle = -CirlceControl.radians(150)
 
         this.onValueChange = options.onValueChange
+        this.setValue(options.value == undefined ? 0 : options.value)
 
-        this.setValue(options.value)
-
-        if (options.addEventsListeners !== false) {
-            this.addEventsListeners()
+        if (options.init === undefined || options.init) {
+            this.init()
         }
+    }
+
+    init() {
+        this.refreshCoordinates()
+        this.addEventsListeners()
     }
 
     renderInitial() {
@@ -30,10 +35,10 @@ export default class CirlceControl {
 
         this.svg.append("defs").html(
             `<filter x="-3.9%" y="-2.8%" width="107.9%" height="107.9%" filterUnits="objectBoundingBox" id="filter-2">
-        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-        <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-        <feColorMatrix values="0 0 0 0 0.524208121   0 0 0 0 0.475951723   0 0 0 0 0.279116418  0 0 0 0.446388134 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-      </filter>`
+                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                <feColorMatrix values="0 0 0 0 0.524208121   0 0 0 0 0.475951723   0 0 0 0 0.279116418  0 0 0 0.446388134 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+              </filter>`
         )
 
         this.svg
@@ -157,40 +162,47 @@ export default class CirlceControl {
 
         const value = this.getValue()
         this.valueText.text(value)
-        this.onValueChange(value)
     }
 
     addEventsListeners() {
-        const elem = document.querySelector(this.elem),
-            rect = elem.querySelector("svg").getBoundingClientRect(),
-            x = rect.left,
-            y = rect.top
-
-        elem.addEventListener("mousemove", e => {
+        this.domElem.addEventListener("mousemove", e => {
             if (e.buttons == 1) {
-                this.click(e.clientX - x, e.clientY - y)
+                this.click(e.clientX - this.x, e.clientY - this.y)
                 e.preventDefault()
             }
         })
-        elem.addEventListener("click", e => {
-            this.click(e.clientX - x, e.clientY - y)
+        this.domElem.addEventListener("click", e => {
+            this.click(e.clientX - this.x, e.clientY - this.y)
             e.preventDefault()
         })
-        elem.addEventListener(
-            "touchmove",
-            e => {
-                this.click(e.touches[0].clientX - x, e.touches[0].clientY - y)
-                e.preventDefault()
-            },
-            { passive: true }
-        )
+        this.domElem.addEventListener("touchmove", e => {
+            this.click(
+                e.touches[0].clientX - this.x,
+                e.touches[0].clientY - this.y
+            )
+            e.preventDefault()
+        })
+        document.body.onresize = () => {
+            this.refreshCoordinates()
+        }
     }
 
-    click(clickX, clickY) {
-        this.clickX = clickX
-        this.clickY = clickY
-        this.angle = this.calcClickAngle()
+    click(x, y) {
+        this.angle = this.calcClickAngle(x, y)
         this.render()
+    }
+
+    calcClickAngle(x, y) {
+        const r = Math.hypot(x - this.center, y - this.center)
+
+        let angle = Math.asin(Math.abs(this.center - x) / r)
+        if (y > this.center) angle = Math.PI - angle
+        if (x < this.center) angle *= -1
+
+        if (angle < this.startAngle - 0.08) angle = this.startAngle - 0.08
+        if (angle > -this.startAngle + 0.08) angle = -this.startAngle + 0.08
+
+        return angle
     }
 
     getValue() {
@@ -212,19 +224,10 @@ export default class CirlceControl {
         this.render()
     }
 
-    calcClickAngle() {
-        const x = this.clickX,
-            y = this.clickY,
-            r = Math.hypot(x - this.center, y - this.center)
-
-        let angle = Math.asin(Math.abs(this.center - x) / r)
-        if (y > this.center) angle = Math.PI - angle
-        if (x < this.center) angle *= -1
-
-        if (angle < this.startAngle - 0.08) angle = this.startAngle - 0.08
-        if (angle > -this.startAngle + 0.08) angle = -this.startAngle + 0.08
-
-        return angle
+    refreshCoordinates() {
+        const rect = this.domElem.querySelector("svg").getBoundingClientRect()
+        this.x = rect.left
+        this.y = rect.top
     }
 
     static degrees(radians) {

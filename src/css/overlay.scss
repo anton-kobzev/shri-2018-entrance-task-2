@@ -28,6 +28,7 @@ body.header-menu-opened {
 }
 
 body.popup-opened {
+    position: fixed;
     overflow: hidden;
 
     .wrap {
