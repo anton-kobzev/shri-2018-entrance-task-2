@@ -27,7 +27,7 @@ export default class Slider {
 
                 const animateScroll = () => {
                     currentTime += increment
-                    this.scrollElem.scrollLeft = Slider.easeInOutQuad(
+                    this.scrollElem.scrollLeft = Slider.easing(
                         currentTime,
                         start,
                         change,
@@ -74,7 +74,7 @@ export default class Slider {
         return 400
     }
 
-    static easeInOutQuad(t, b, c, d) {
+    static easing(t, b, c, d) {
         t /= d / 2
         if (t < 1) return (c / 2) * t * t + b
         t--
