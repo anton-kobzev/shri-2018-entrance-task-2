@@ -26,6 +26,10 @@
             display: block;
         }
 
+        .menu__icon_on-opened {
+            display: none;
+        }
+
         &__collapse {
             display: none;
             position: absolute;
@@ -50,6 +54,16 @@
         &_opened {
             .menu__collapse {
                 display: block;
+            }
+
+            .menu__icon_on-opened {
+                display: block;
+                margin-top: -3px;
+                width: 14px !important;
+            }
+
+            .menu__icon_on-closed {
+                display: none;
             }
         }
     }

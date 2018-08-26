@@ -1,7 +1,7 @@
-import { initDropdownButtons } from "./button"
-import { showDevicePopup } from "./popup"
 import Slider from "./slider"
 import Filter from "./filter"
+import { initDropdownButtons } from "./button"
+import { showDevicePopup } from "./popup"
 
 window.onload = () => {
     if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
