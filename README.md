@@ -2,8 +2,10 @@
 
 Решение тестового задания по вёрстке для [14-й Школы разработки интерфейсов](https://academy.yandex.ru/events/frontend/shri_msk-2018-2).
 
-Выложено на https://anton-kobzev.github.io/shri-2018-entrance-task-2/.
+Доступно по адресу https://kzon.github.io/shri-2018-entrance-task-2/.
 Сохраняет адекватный вид при любом размере экрана.
+
+![image](https://user-images.githubusercontent.com/6276455/68571991-5c090080-0475-11ea-8288-9463cdc64041.png)
 
 ## Используемые инструменты
 
